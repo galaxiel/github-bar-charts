@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Bar Charts — Statistiques de profil en graphiques</title>
+  <meta name="description" content="Visualisez les statistiques d'un profil GitHub (étoiles, forks, langages) en graphiques en barres." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>📊 GitHub Bar Charts</h1>
+    <form id="search-form" autocomplete="off">
+      <input id="username-input" type="text" placeholder="Nom d'utilisateur GitHub…" value="galaxiel" spellcheck="false" />
+      <button type="submit">Générer</button>
+    </form>
+  </header>
+
+  <main>
+    <div id="status" class="status hidden"></div>
+
+    <section id="profile" class="profile-card hidden">
+      <img id="avatar" alt="Avatar GitHub" />
+      <div class="profile-info">
+        <h2 id="display-name"></h2>
+        <a id="login" target="_blank" rel="noopener"></a>
+        <p id="bio"></p>
+        <ul class="stats-row">
+          <li><strong id="stat-repos">0</strong> dépôts publics</li>
+          <li><strong id="stat-followers">0</strong> followers</li>
+          <li><strong id="stat-stars">0</strong> ⭐ totales</li>
+          <li><strong id="stat-forks">0</strong> forks</li>
+        </ul>
+      </div>
+    </section>
+
+    <div id="charts" class="charts hidden">
+      <section class="chart-card">
+        <h3>⭐ Étoiles par dépôt <span class="muted">(top 10)</span></h3>
+        <div class="chart-wrap"><canvas id="chart-stars"></canvas></div>
+      </section>
+
+      <section class="chart-card">
+        <h3> Forks par dépôt <span class="muted">(top 10)</span></h3>
+        <div class="chart-wrap"><canvas id="chart-forks"></canvas></div>
+      </section>
+
+      <section class="chart-card">
+        <h3>💾 Langages utilisés <span class="muted">(nombre de dépôts)</span></h3>
+        <div class="chart-wrap"><canvas id="chart-langs"></canvas></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Données fournies par l'API publique GitHub · <a href="https://github.com/galaxiel/github-bar-charts" target="_blank" rel="noopener">Code source</a></p>
+  </footer>
+</body>
+</html>
